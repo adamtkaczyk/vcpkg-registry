@@ -4,7 +4,7 @@ vcpkg_from_git(
   OUT_SOURCE_PATH
   SOURCE_PATH
   URL
-  ssh://git@github.com/adamtkaczyk/libcsprrpc.git
+  git@github.com:adamtkaczyk/libcsprrpc.git
   REF
   b5cb499aeb0c8a879ec8040f4b71ad550c370fe0
   HEAD_REF
