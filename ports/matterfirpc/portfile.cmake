@@ -1,4 +1,6 @@
 set(VCPKG_POLICY_EMPTY_INCLUDE_FOLDER enabled)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_GNU_SOURCE")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_GNU_SOURCE")
 
 vcpkg_from_git(
   OUT_SOURCE_PATH
@@ -6,7 +8,7 @@ vcpkg_from_git(
   URL
   git@github.com:adamtkaczyk/libcsprrpc.git
   REF
-  5137591ebbc19acc32c8ce2194391f8652484301
+  e842057833d2271c2f7409171f7f296b36f6fe41
   HEAD_REF
   test_branch)
 
