@@ -63,6 +63,10 @@
             "default-features": false
         },
         {
+            "name": "boost-stacktrace",
+            "default-features": false
+        },
+        {
             "name": "boost-system",
             "default-features": false
         },

@@ -4,11 +4,11 @@ vcpkg_from_git(
   OUT_SOURCE_PATH
   SOURCE_PATH
   URL
-  ssh://git@github.com/matterfi/matterfirpc.git
+  ssh://git@github.com/adamtkaczyk/libcsprrpc.git
   REF
-  805a1b3bb0be1867f0c0bbc3d039cc65315889ac
+  b5cb499aeb0c8a879ec8040f4b71ad550c370fe0
   HEAD_REF
-  release-0.2)
+  release-0.2-ME-587-test)
 
 vcpkg_cmake_configure(
   SOURCE_PATH
