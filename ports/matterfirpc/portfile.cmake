@@ -4,11 +4,11 @@ vcpkg_from_git(
   OUT_SOURCE_PATH
   SOURCE_PATH
   URL
-  ssh://git@github.com/matterfi/matterfirpc.git
+  ssh://git@github.com/adamtkaczyk/libcsprrpc.git
   REF
-  e3607f55b8f74ceb434a761c74d19a535dcd07fa
+  90ce33392134d4edce21f7076d4e5f2b495ae8f5
   HEAD_REF
-  release-0.3)
+  solana_build_fix)
 
 vcpkg_check_features(
   OUT_FEATURE_OPTIONS FEATURE_OPTIONS
