@@ -2,7 +2,7 @@ diff --git a/src/build-data/botan-config.cmake.in b/src/build-data/botan-config.
 index 8d14c4e..cfc9277 100644
 --- a/src/build-data/botan-config.cmake.in
 +++ b/src/build-data/botan-config.cmake.in
-@@ -65,27 +65,36 @@ if(DEFINED ${CMAKE_FIND_PACKAGE_NAME}_FOUND AND NOT ${${CMAKE_FIND_PACKAGE_NAME}
+@@ -65,27 +65,43 @@ if(DEFINED ${CMAKE_FIND_PACKAGE_NAME}_FOUND AND NOT ${${CMAKE_FIND_PACKAGE_NAME}
    return()
  endif()
  
@@ -23,6 +23,13 @@ index 8d14c4e..cfc9277 100644
 +      INTERFACE_INCLUDE_DIRECTORIES     "${_Botan_PREFIX}/include"
        IMPORTED_LINK_INTERFACE_LANGUAGES "CXX"
        INTERFACE_LINK_OPTIONS            "SHELL:%{cxx_abi_flags}")
++  if(APPLE)
++    find_library(_Botan_CoreFoundation_FRAMEWORK CoreFoundation REQUIRED)
++    find_library(_Botan_Security_FRAMEWORK Security REQUIRED)
++    set_target_properties(Botan::Botan-static
++      PROPERTIES
++        INTERFACE_LINK_LIBRARIES "${_Botan_CoreFoundation_FRAMEWORK};${_Botan_Security_FRAMEWORK}")
++  endif()
 +  if(EXISTS "${_Botan_PREFIX}/debug/lib/%{static_lib_name}")
 +    set_property(TARGET Botan::Botan-static APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 +    set_target_properties(Botan::Botan-static PROPERTIES
@@ -45,7 +52,7 @@ index 8d14c4e..cfc9277 100644
  %{endif}
  %{unless implib_name}
  set(_Botan_implib "")
-@@ -100,10 +109,28 @@ if(NOT TARGET Botan::Botan)
+@@ -100,10 +116,35 @@ if(NOT TARGET Botan::Botan)
    add_library(Botan::Botan SHARED IMPORTED)
    set_target_properties(Botan::Botan
      PROPERTIES
@@ -54,6 +61,13 @@ index 8d14c4e..cfc9277 100644
 -      INTERFACE_INCLUDE_DIRECTORIES "${_Botan_PREFIX}/include/botan-%{version_major}"
 +      INTERFACE_INCLUDE_DIRECTORIES "${_Botan_PREFIX}/include"
        INTERFACE_LINK_OPTIONS        "SHELL:%{cxx_abi_flags}")
++  if(APPLE)
++    find_library(_Botan_CoreFoundation_FRAMEWORK CoreFoundation REQUIRED)
++    find_library(_Botan_Security_FRAMEWORK Security REQUIRED)
++    set_target_properties(Botan::Botan
++      PROPERTIES
++        INTERFACE_LINK_LIBRARIES "${_Botan_CoreFoundation_FRAMEWORK};${_Botan_Security_FRAMEWORK}")
++  endif()
 +  if(EXISTS "${_Botan_PREFIX}/debug/lib/%{shared_lib_name}")
 +    set_property(TARGET Botan::Botan APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 +    set_target_properties(Botan::Botan PROPERTIES
